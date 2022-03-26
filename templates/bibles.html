@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-mybible
-{% endblock %}
+{% for book in object_list %}
+<li>
+    <ul>{{book.book_title}}</ul>
+    <ul>{{book.keyword1}}</ul>
+    <ul>{{book.keyword2}}</ul>
+    <ul>{{book.keyword3}}</ul>
+    <ul>{{book.comment}}</ul>
+</li>
+{% endfor %}
+{% endblock content %}
