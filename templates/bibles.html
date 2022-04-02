@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<form action="" method="get">
+    <input name="query" value="{{ request.GET.query }}" type="text">
+    <button type="submit">検索する</button>
+</form>
 {% for book in object_list %}
 <li>
     <ul>{{book.book_title}}</ul>
+    <ul>{{book.author}}</ul>
     <ul>{{book.keyword1}}</ul>
     <ul>{{book.keyword2}}</ul>
     <ul>{{book.keyword3}}</ul>

@@ -13,7 +13,7 @@ services:
       - db
   db:
     container_name: mysql_container
-    image: mysql:5.7
+    image: mysql/mysql-server:5.7.28
     platform: linux/x86_64
     restart: always
     environment:
@@ -23,5 +23,6 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 33306:3306

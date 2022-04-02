@@ -6,6 +6,7 @@ import datetime
 
 class Book(models.Model):
     book_title = models.CharField(max_length=50)
+    author = models.CharField(max_length=50)
     keyword1 = models.CharField(max_length=50)
     keyword2 = models.CharField(max_length=50, null=True)
     keyword3 = models.CharField(max_length=50, null=True)
