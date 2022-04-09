@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from .local_settings import SECRET_KEY_LOCAL, password_local
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# /Users/taharafumiya/myworks/mybibleが出力される
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -123,6 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
