@@ -5,10 +5,11 @@
 <link href="{% static 'css/test.css' %}" rel="stylesheet">
 {% endblock customcss %}
 
-
 {% block content %}
-<h1>MyBible</h1>>
-テスト
+<header>
+
+</header>
+<h1>MyBible</h1>
 <form action="" method="get">
     <input name="query" value="{{ request.GET.query }}" type="text">
     <button type="submit">検索する</button>
