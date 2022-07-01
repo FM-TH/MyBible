@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, TemplateView, CreateView
 from .models import Book
 from django.urls import reverse_lazy
+import app_local
+# import requests
 
 
 # Create your views here.
@@ -27,3 +29,8 @@ class BibleCreate(CreateView):
 class BiblesList(ListView):
     template_name = 'bibles.html'
     model = Book
+
+
+def searchbooks(request):
+    print("API entered")
+    API_KEY = app_local.API_KEY_LOCAL

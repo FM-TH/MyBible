@@ -1,2 +1,3 @@
 mybible_project/local_settings.py
-/.env
+env
+mybible_app/app_local.py
