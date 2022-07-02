@@ -31,6 +31,9 @@ class BiblesList(ListView):
     model = Book
 
 
-def searchbooks(request):
+def searchbooks(query):
     print("API entered")
     API_KEY = app_local.API_KEY_LOCAL
+    endpoint = "https://www.googleapis.com/books/v1"
+    url = endpoint + "/volumes?q=" + query
+    # 検索機能どうやっていれるかフォームからこの関数に入れるには？
