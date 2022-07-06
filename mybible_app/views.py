@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, TemplateView, CreateView
 from .models import Book
 from django.urls import reverse_lazy
-import app_local
-# import requests
+from .app_local import API_KEY_LOCAL
+import requests
 
 
 # Create your views here.
@@ -12,6 +12,14 @@ import app_local
 
 class HomeView(TemplateView):
     template_name = 'home.html'
+
+    def searchbooks(query):
+        print("API entered")
+        API_KEY = API_KEY_LOCAL
+        url = "https://www.googleapis.com/books/v1/volumes"
+        payload = {"q": "", "key": API_KEY}
+        r = requests.get(url, params=payload)
+        # 検索機能どうやっていれるかフォームからこの関数に入れるには？
 
 
 class MypageView(TemplateView):
@@ -29,11 +37,3 @@ class BibleCreate(CreateView):
 class BiblesList(ListView):
     template_name = 'bibles.html'
     model = Book
-
-
-def searchbooks(query):
-    print("API entered")
-    API_KEY = app_local.API_KEY_LOCAL
-    endpoint = "https://www.googleapis.com/books/v1"
-    url = endpoint + "/volumes?q=" + query
-    # 検索機能どうやっていれるかフォームからこの関数に入れるには？
