@@ -6,4 +6,5 @@ ADD requirements.txt /code/
 RUN pip3 install -r requirements.txt
 ADD . /code/
 EXPOSE 8000
+RUN python -m pip install requests
 
