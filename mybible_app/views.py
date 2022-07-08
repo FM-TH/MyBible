@@ -9,7 +9,6 @@ import requests
 
 # Create your views here.
 
-
 class HomeView(TemplateView):
     template_name = 'home.html'
 
@@ -18,6 +17,7 @@ class HomeView(TemplateView):
         API_KEY = API_KEY_LOCAL
         url = "https://www.googleapis.com/books/v1/volumes"
         payload = {"q": "", "key": API_KEY}
+        # google books apiからいろんなデータ受け取る
         r = requests.get(url, params=payload)
         # 検索機能どうやっていれるかフォームからこの関数に入れるには？
 
