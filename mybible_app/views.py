@@ -1,9 +1,9 @@
 from dataclasses import field
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView, CreateView
-from .models import Book
+from models import Book
 from django.urls import reverse_lazy
-from .app_local import API_KEY_LOCAL
+from app_local import API_KEY_LOCAL
 import requests
 
 
@@ -16,10 +16,9 @@ class HomeView(TemplateView):
         print("API entered")
         API_KEY = API_KEY_LOCAL
         url = "https://www.googleapis.com/books/v1/volumes"
-        payload = {"q": "", "key": API_KEY}
+        payload = {"q": query, "key": API_KEY}
         # google books apiからいろんなデータ受け取る
         r = requests.get(url, params=payload)
-        # 検索機能どうやっていれるかフォームからこの関数に入れるには？
 
 
 class MypageView(TemplateView):
