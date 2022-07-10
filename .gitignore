@@ -1,3 +1,2 @@
 mybible_project/local_settings.py
-env
-mybible_app/app_local.py
+mybible_app/templatetags/app_local.py
