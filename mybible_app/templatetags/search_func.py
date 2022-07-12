@@ -1,6 +1,5 @@
 import requests
 from .app_local import API_KEY_LOCAL
-import json
 
 
 def searchbooks(query):
@@ -10,7 +9,11 @@ def searchbooks(query):
     payload = {"q": query, "key": API_KEY}
     # google books apiからいろんなデータ受け取る
     r = requests.get(url, params=payload)
-    print(r.json)
+    JsonData = r.json()
+    # print(JsonData["items"])
+    ProcessedData = []
+    for JsonObj in JsonData["items"]:
+        # 加工したデータをリストに追加
 
 
-searchbooks("鬼滅")
+searchbooks("夏目漱石")
