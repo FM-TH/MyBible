@@ -12,8 +12,26 @@ def searchbooks(query):
     JsonData = r.json()
     # print(JsonData["items"])
     ProcessedData = []
+    # 加工したデータをリストに格納
     for JsonObj in JsonData["items"]:
-        # 加工したデータをリストに追加
+        ProcessedData.append(JsonObj["volumeInfo"])
+    # title, authors, descriptionを取り出し
+    for x in ProcessedData:
+        authorExist = "authors" in x
+        descriptionExist = "description" in x
+
+        print(x["title"])
+        if authorExist == True:
+            print(x["authors"])
+        else:
+            print("著者は不明です")
+
+        if descriptionExist == True:
+            print(x["description"])
+        else:
+            print("説明はありません")
+        print("**************************")
+        print("\n")
 
 
 searchbooks("夏目漱石")
