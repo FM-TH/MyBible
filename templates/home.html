@@ -10,7 +10,7 @@
 
 </header>
 <h1>MyBible</h1>
-<form action="../mybible_app/search_func.py" method="post">
+<form action="" method="get">{% csrf_token %}
     <input name="q" value="{{ request.GET.query }}" type="text">
     <button type="submit">検索する</button>
 </form>

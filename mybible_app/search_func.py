@@ -1,5 +1,11 @@
+import cgi
+import cgitb
 import requests
 from .app_local import API_KEY_LOCAL
+
+cgitb.enable()
+
+query = cgi.FieldStorage()
 
 
 def searchbooks(query):
@@ -34,4 +40,4 @@ def searchbooks(query):
         print("\n")
 
 
-searchbooks("夏目漱石")
+searchbooks(query)
