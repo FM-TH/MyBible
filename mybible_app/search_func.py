@@ -1,11 +1,5 @@
-import cgi
-import cgitb
 import requests
 from .app_local import API_KEY_LOCAL
-
-cgitb.enable()
-
-query = cgi.FieldStorage()
 
 
 def searchbooks(query):
