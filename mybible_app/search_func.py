@@ -16,7 +16,6 @@ def searchbooks(query):
     # google books apiからいろんなデータ受け取る
     r = requests.get(url, params=payload)
     JsonData = r.json()
-    # print(JsonData["items"])
     ProcessedData = []
     # 加工したデータをリストに格納
     for JsonObj in JsonData["items"]:

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'css/custom_home.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<header>
+
+</header>
+<h1>MyBible</h1>
+<form action="" method="get">{% csrf_token %}
+    <input name="q" value="{{ request.GET.query }}" type="text">
+    <button type="submit">検索する</button>
+</form>
+
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock content %}

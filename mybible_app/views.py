@@ -9,8 +9,18 @@ import requests
 
 # Create your views here.
 
-class HomeView(TemplateView):
-    template_name = 'home.html'
+def searchbooks(request):
+    print("aaaaわわわ")
+    print(request)
+    print("おにぎり")
+    context = {
+        'sample_data': 'Hello world!'
+    }
+    return render(request, 'searchbooks.html', context)
+
+
+# class HomeView(TemplateView):
+#     template_name = 'home.html'
 
     # def searchbooks(query):
     #     print("API entered")
