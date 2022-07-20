@@ -12,8 +12,9 @@ import requests
 def searchbooks(request):
     print("API entered")
     API_KEY = API_KEY_LOCAL
+    query = request.GET["q"]
     url = "https://www.googleapis.com/books/v1/volumes"
-    payload = {"q": request.GET["q"], "key": API_KEY}
+    payload = {"q": query, "key": API_KEY}
     # google books apiからいろんなデータ受け取る
     r = requests.get(url, params=payload)
     JsonData = r.json()
@@ -39,18 +40,6 @@ def searchbooks(request):
         print("**************************")
         print("\n")
     return render(request, 'searchbooks.html')
-
-
-# class HomeView(TemplateView):
-#     template_name = 'home.html'
-
-    # def searchbooks(query):
-    #     print("API entered")
-    #     API_KEY = API_KEY_LOCAL
-    #     url = "https://www.googleapis.com/books/v1/volumes"
-    #     payload = {"q": query, "key": API_KEY}
-    #     # google books apiからいろんなデータ受け取る
-    #     r = requests.get(url, params=payload)
 
 
 class MypageView(TemplateView):
