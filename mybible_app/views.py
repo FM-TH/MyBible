@@ -12,9 +12,18 @@ import requests
 def searchbooks(request):
     print("API entered")
     API_KEY = API_KEY_LOCAL
-    query = request.GET["q"]
+
+    try:
+        query = request.GET["q"]
+    except KeyError:
+        pass
+
     url = "https://www.googleapis.com/books/v1/volumes"
-    payload = {"q": query, "key": API_KEY}
+
+    try:
+        payload = {"q": query, "key": API_KEY}
+    except:
+        payload = {"q": "夏目漱石", "key": API_KEY}
     # google books apiからいろんなデータ受け取る
     r = requests.get(url, params=payload)
     JsonData = r.json()
