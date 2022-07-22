@@ -23,7 +23,8 @@ def searchbooks(request):
     try:
         payload = {"q": query, "key": API_KEY}
     except:
-        payload = {"q": "夏目漱石", "key": API_KEY}
+        payload = {"q": "ハンターハンター", "key": API_KEY}
+
     # google books apiからいろんなデータ受け取る
     r = requests.get(url, params=payload)
     JsonData = r.json()
@@ -31,22 +32,33 @@ def searchbooks(request):
     # 加工したデータをリストに格納
     for JsonObj in JsonData["items"]:
         ProcessedData.append(JsonObj["volumeInfo"])
+
+    # リスト格納する辞書を用意
+    context = {"BookTitle": [], "BookAuthor": [], "BookDescription": []}
+
     # title, authors, descriptionを取り出し
     for x in ProcessedData:
         authorExist = "authors" in x
         descriptionExist = "description" in x
 
-        print(x["title"])
+        context["BookTitle"].append(x["title"])
+
         if authorExist == True:
-            print(x["authors"])
+            context["BookAuthor"].append(x["authors"])
         else:
-            print("著者は不明です")
+            context["BookTitle"].append("著者は不明です")
 
         if descriptionExist == True:
-            print(x["description"])
+            context["BookDescription"].append(x["description"])
         else:
-            print("説明はありません")
-        print("**************************")
+            context["BookTitle"].append("説明はありません")
+
+    # 動作確認
+    for i in range(5):
+        print(context["BookTitle"][i])
+        print(context["BookAuthor"][i])
+        print(context["BookDescription"][i])
+        print("*******************")
         print("\n")
     return render(request, 'searchbooks.html')
 
